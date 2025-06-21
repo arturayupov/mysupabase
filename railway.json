@@ -1,9 +1,15 @@
 {
+  "$schema": "https://railway.app/railway.schema.json",
   "services": {
-    "kong-config-runner": {
+    "kong-runner": {
       "sourceDir": ".",
-      "buildCommand": "echo 'No build needed'",
-      "startCommand": "./configure-kong.sh"
+      "startCommand": "./configure-kong.sh",
+      "buildCommand": "echo 'No build step needed'",
+      "envVars": {
+        "RAILWAY_STATIC_URL": {
+          "fromService": "kong-runner"
+        }
+      }
     }
   }
 }
